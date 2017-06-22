@@ -147,7 +147,7 @@ const initialFormState = {
   email: '',
   number: 0,
   description: '',
-  animal: '',
+  animal: 'doggo',
   food: '',
   simulateServerError: false,
 };
