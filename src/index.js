@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { compose, withHandlers } from 'recompose';
+import { compose, withHandlers, withState } from 'recompose';
 import {
   withFormData,
   withIsSubmitting,
@@ -8,7 +8,15 @@ import {
   withValidationErrors,
 } from './lib/forms';
 
-function MyForm({ onSubmit, onChange, isSubmitting, error, errors, data }) {
+function MyForm({
+  onSubmit,
+  onChange,
+  isSubmitting,
+  error,
+  errors,
+  data,
+  output,
+}) {
   return (
     <form onSubmit={onSubmit}>
       {error ? <span className="error">{error}</span> : null}
@@ -126,6 +134,10 @@ function MyForm({ onSubmit, onChange, isSubmitting, error, errors, data }) {
         value={isSubmitting ? 'Submitting' : 'Submit'}
         disabled={isSubmitting}
       />
+
+      <pre>
+        {output}
+      </pre>
     </form>
   );
 }
@@ -141,6 +153,7 @@ const initialFormState = {
 };
 
 const MyFormContainer = compose(
+  withState('output', 'setOutput', ''),
   withFormData(initialFormState),
   withIsSubmitting,
   withError,
@@ -157,6 +170,7 @@ const MyFormContainer = compose(
 
       props.setIsSubmitting(true);
 
+      props.setOutput(JSON.stringify(props.data, null, 2));
       console.log(props.data);
 
       // simulate something async
