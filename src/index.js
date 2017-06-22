@@ -33,7 +33,7 @@ function MyForm({
       </field>
 
       <field>
-        <label htmlFor="name">Number</label>
+        <label htmlFor="number">Number</label>
         <input
           type="number"
           name="number"
