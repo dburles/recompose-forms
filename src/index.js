@@ -159,29 +159,36 @@ const MyFormContainer = compose(
   withError,
   withValidationErrors,
   withHandlers({
-    onSubmit: props => event => {
+    onSubmit: ({
+      data,
+      setValidationErrors,
+      setIsSubmitting,
+      setError,
+      updateForm,
+      setOutput,
+    }) => event => {
       event.preventDefault();
 
       // validate however
-      if (props.data.name.length === 0) {
-        return props.setValidationErrors({ name: 'Name is required' });
+      if (data.name.length === 0) {
+        return setValidationErrors({ name: 'Name is required' });
       }
-      props.setValidationErrors({});
+      setValidationErrors({});
 
-      props.setIsSubmitting(true);
+      setIsSubmitting(true);
 
-      props.setOutput(JSON.stringify(props.data, null, 2));
-      console.log(props.data);
+      setOutput(JSON.stringify(data, null, 2));
+      console.log(data);
 
       // simulate something async
       setTimeout(() => {
-        props.setIsSubmitting(false);
+        setIsSubmitting(false);
         // some kind of server error
-        if (props.data.simulateServerError) {
-          return props.setError('A simulated server error happened');
+        if (data.simulateServerError) {
+          return setError('A simulated server error happened');
         }
-        props.setError(null);
-        props.updateForm(initialFormState);
+        setError(null);
+        updateForm(initialFormState);
       }, 1000);
     },
   }),
