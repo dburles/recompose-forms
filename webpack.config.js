@@ -22,6 +22,7 @@ module.exports = {
     open: false,
     port: 3000,
     historyApiFallback: true,
+    disableHostCheck: true,
   },
   plugins: [
     new webpack.DefinePlugin({
