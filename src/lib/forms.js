@@ -4,7 +4,7 @@ export const onChangeHandler = props => event => {
   const target = event.target;
   const value = target.type === 'checkbox' ? target.checked : target.value;
   const name = target.name;
-  props.updateForm(state => ({ ...state, [name]: value }));
+  props.setFormData(state => ({ ...state, [name]: value }));
 };
 
 export const withValidationErrors = withState(
@@ -15,7 +15,7 @@ export const withValidationErrors = withState(
 
 export const withFormData = initialState =>
   compose(
-    withState('data', 'updateForm', initialState),
+    withState('data', 'setFormData', initialState),
     withHandlers({
       onChange: onChangeHandler,
     }),

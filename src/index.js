@@ -164,7 +164,7 @@ const MyFormContainer = compose(
       setValidationErrors,
       setIsSubmitting,
       setError,
-      updateForm,
+      setFormData,
       setOutput,
     }) => event => {
       event.preventDefault();
@@ -188,7 +188,7 @@ const MyFormContainer = compose(
           return setError('A simulated server error happened');
         }
         setError(null);
-        updateForm(initialFormState);
+        setFormData(initialFormState);
       }, 1000);
     },
   }),
