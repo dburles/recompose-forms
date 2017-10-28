@@ -20,7 +20,7 @@ function MyForm({
   return (
     <form onSubmit={onSubmit}>
       {error ? <span className="error">{error}</span> : null}
-      <div>
+      <div className="section">
         <label htmlFor="name">Name (required)</label>
         {errors.name ? <span className="error">{errors.name}</span> : null}
         <input
@@ -32,7 +32,7 @@ function MyForm({
         />
       </div>
 
-      <div>
+      <div className="section">
         <label htmlFor="number">Number</label>
         <input
           type="number"
@@ -43,7 +43,7 @@ function MyForm({
         />
       </div>
 
-      <div>
+      <div className="section">
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -54,7 +54,7 @@ function MyForm({
         />
       </div>
 
-      <div>
+      <div className="section">
         <label htmlFor="email">Description</label>
         <textarea
           type="description"
@@ -65,7 +65,7 @@ function MyForm({
         />
       </div>
 
-      <div>
+      <div className="section">
         <label htmlFor="email">Animal</label>
         <select
           type="animal"
@@ -80,7 +80,7 @@ function MyForm({
         </select>
       </div>
 
-      <div>
+      <div className="section">
         <label htmlFor="simulateServerError">Simulate Server Error?</label>
         <input
           type="checkbox"
@@ -92,7 +92,7 @@ function MyForm({
       </div>
 
       <div className="radio-group">
-        <div className="condensed">
+        <div className="section condensed">
           <input
             type="radio"
             name="food"
@@ -104,7 +104,7 @@ function MyForm({
           <label htmlFor="donut">Donut</label>
         </div>
 
-        <div className="condensed">
+        <div className="section condensed">
           <input
             type="radio"
             name="food"
@@ -116,7 +116,7 @@ function MyForm({
           <label htmlFor="cake">Cake</label>
         </div>
 
-        <div className="condensed">
+        <div className="section condensed">
           <input
             type="radio"
             name="food"
