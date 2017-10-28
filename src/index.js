@@ -20,7 +20,7 @@ function MyForm({
   return (
     <form onSubmit={onSubmit}>
       {error ? <span className="error">{error}</span> : null}
-      <section>
+      <div>
         <label htmlFor="name">Name (required)</label>
         {errors.name ? <span className="error">{errors.name}</span> : null}
         <input
@@ -30,9 +30,9 @@ function MyForm({
           value={formData.name}
           onChange={onChange}
         />
-      </section>
+      </div>
 
-      <section>
+      <div>
         <label htmlFor="number">Number</label>
         <input
           type="number"
@@ -41,9 +41,9 @@ function MyForm({
           value={formData.number}
           onChange={onChange}
         />
-      </section>
+      </div>
 
-      <section>
+      <div>
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -52,9 +52,9 @@ function MyForm({
           value={formData.email}
           onChange={onChange}
         />
-      </section>
+      </div>
 
-      <section>
+      <div>
         <label htmlFor="email">Description</label>
         <textarea
           type="description"
@@ -63,9 +63,9 @@ function MyForm({
           value={formData.description}
           onChange={onChange}
         />
-      </section>
+      </div>
 
-      <section>
+      <div>
         <label htmlFor="email">Animal</label>
         <select
           type="animal"
@@ -78,9 +78,9 @@ function MyForm({
           <option value="pupper">Pupper</option>
           <option value="catto">Catto</option>
         </select>
-      </section>
+      </div>
 
-      <section>
+      <div>
         <label htmlFor="simulateServerError">Simulate Server Error?</label>
         <input
           type="checkbox"
@@ -89,10 +89,10 @@ function MyForm({
           value={formData.simulateServerError}
           onChange={onChange}
         />
-      </section>
+      </div>
 
       <div className="radio-group">
-        <section className="condensed">
+        <div className="condensed">
           <input
             type="radio"
             name="food"
@@ -102,9 +102,9 @@ function MyForm({
             value="donut"
           />
           <label htmlFor="donut">Donut</label>
-        </section>
+        </div>
 
-        <section className="condensed">
+        <div className="condensed">
           <input
             type="radio"
             name="food"
@@ -114,9 +114,9 @@ function MyForm({
             value="cake"
           />
           <label htmlFor="cake">Cake</label>
-        </section>
+        </div>
 
-        <section className="condensed">
+        <div className="condensed">
           <input
             type="radio"
             name="food"
@@ -126,7 +126,7 @@ function MyForm({
             value="burger"
           />
           <label htmlFor="burger">Burger</label>
-        </section>
+        </div>
       </div>
 
       <input
