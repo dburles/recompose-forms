@@ -1,9 +1,12 @@
 import { compose, withState, withHandlers } from 'recompose';
 
 export const onChangeHandler = props => event => {
-  const target = event.target;
+  const target = event.currentTarget;
   const value = target.type === 'checkbox' ? target.checked : target.value;
   const name = target.name;
+  if (!name) {
+    throw Error('Field must have a name attribute!');
+  }
   props.setFormData(state => ({ ...state, [name]: value }));
 };
 
@@ -15,7 +18,7 @@ export const withValidationErrors = withState(
 
 export const withFormData = initialState =>
   compose(
-    withState('data', 'setFormData', initialState),
+    withState('formData', 'setFormData', initialState),
     withHandlers({
       onChange: onChangeHandler,
     }),

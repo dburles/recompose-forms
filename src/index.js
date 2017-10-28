@@ -14,7 +14,7 @@ function MyForm({
   isSubmitting,
   error,
   errors,
-  data,
+  formData,
   output,
 }) {
   return (
@@ -27,7 +27,7 @@ function MyForm({
           type="text"
           name="name"
           id="name"
-          value={data.name}
+          value={formData.name}
           onChange={onChange}
         />
       </section>
@@ -38,7 +38,7 @@ function MyForm({
           type="number"
           name="number"
           id="number"
-          value={data.number}
+          value={formData.number}
           onChange={onChange}
         />
       </section>
@@ -49,7 +49,7 @@ function MyForm({
           type="email"
           name="email"
           id="email"
-          value={data.email}
+          value={formData.email}
           onChange={onChange}
         />
       </section>
@@ -60,7 +60,7 @@ function MyForm({
           type="description"
           name="description"
           id="description"
-          value={data.description}
+          value={formData.description}
           onChange={onChange}
         />
       </section>
@@ -71,7 +71,7 @@ function MyForm({
           type="animal"
           name="animal"
           id="animal"
-          value={data.animal}
+          value={formData.animal}
           onChange={onChange}
         >
           <option value="doggo">Doggo</option>
@@ -86,7 +86,7 @@ function MyForm({
           type="checkbox"
           name="simulateServerError"
           id="simulateServerError"
-          value={data.simulateServerError}
+          value={formData.simulateServerError}
           onChange={onChange}
         />
       </section>
@@ -97,7 +97,7 @@ function MyForm({
             type="radio"
             name="food"
             id="donut"
-            checked={data.food === 'donut'}
+            checked={formData.food === 'donut'}
             onChange={onChange}
             value="donut"
           />
@@ -109,7 +109,7 @@ function MyForm({
             type="radio"
             name="food"
             id="cake"
-            checked={data.food === 'cake'}
+            checked={formData.food === 'cake'}
             onChange={onChange}
             value="cake"
           />
@@ -121,7 +121,7 @@ function MyForm({
             type="radio"
             name="food"
             id="burger"
-            checked={data.food === 'burger'}
+            checked={formData.food === 'burger'}
             onChange={onChange}
             value="burger"
           />
@@ -135,9 +135,7 @@ function MyForm({
         disabled={isSubmitting}
       />
 
-      <pre>
-        {output}
-      </pre>
+      <pre>{output}</pre>
     </form>
   );
 }
@@ -160,7 +158,7 @@ const MyFormContainer = compose(
   withValidationErrors,
   withHandlers({
     onSubmit: ({
-      data,
+      formData,
       setValidationErrors,
       setIsSubmitting,
       setError,
@@ -170,21 +168,21 @@ const MyFormContainer = compose(
       event.preventDefault();
 
       // validate however
-      if (data.name.length === 0) {
+      if (formData.name.length === 0) {
         return setValidationErrors({ name: 'Name is required' });
       }
       setValidationErrors({});
 
       setIsSubmitting(true);
 
-      setOutput(JSON.stringify(data, null, 2));
-      console.log(data);
+      setOutput(JSON.stringify(formData, null, 2));
+      console.log(formData);
 
       // simulate something async
       setTimeout(() => {
         setIsSubmitting(false);
         // some kind of server error
-        if (data.simulateServerError) {
+        if (formData.simulateServerError) {
           return setError('A simulated server error happened');
         }
         setError(null);
